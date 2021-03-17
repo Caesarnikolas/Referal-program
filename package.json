@@ -9,6 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Caesarnikolas/Reference-program.git"
@@ -23,5 +24,6 @@
     "hbs": "^4.1.1",
     "mongoose": "^5.12.0",
     "session-file-store": "^1.5.0"
+
   }
 }
