@@ -6,6 +6,8 @@ const sessions = require('express-session');
 const FileStore = require('session-file-store')(sessions);
 const connect = require('mongoose');
 
+const userRouter = require('./src/routes/user.router');
+
 const app = express();
 const PORT = 3000;
 // Для подписания сессий необходима секретная строка
@@ -42,7 +44,7 @@ app.use(async (req, res, next) => {
   next();
 });
 
-// app.use('/user', userRouter);
+app.use('/user', userRouter);
 // app.use('/', pageRouter);
 
 app.listen(PORT, () => {
