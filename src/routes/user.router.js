@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const multer = require('multer')
+const multer = require('multer');
 
-const upload = multer({ dest: 'uploads/' });
 const ApplicantModel = require('../models/applicant.model');
 const UserModel = require('../models/user.model');
 
+
 const storageConfig = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "public/uploads");
+    cb(null, 'src/public/uploads');
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + file.originalname);
@@ -30,6 +30,7 @@ router.post('/', async (req, res) => {
     telegram,
     photo,
   } = req.body;
+  const image = req.file
   console.log(req.body);
   try {
     const applicant = await ApplicantModel.create({
@@ -38,7 +39,7 @@ router.post('/', async (req, res) => {
       phone,
       startDate,
       telegram,
-      photo,
+      photo: image.filename,
     });
     // eslint-disable-next-line no-underscore-dangle
     const id = req.session?._id;

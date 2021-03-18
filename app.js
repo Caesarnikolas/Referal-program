@@ -18,6 +18,8 @@ const secretKey = '7c48aaa6d93b475ab617753471cfd864270c97d4e8e5a0c8035e6cb89bed1
 // dbConnect();
 
 app.set('view engine', 'hbs');
+app.use(express.static(path.join(process.env.PWD, 'src', 'public')));
+
 hbs.registerPartials(path.join(process.env.PWD, 'src', 'views', 'partials'));
 
 app.set('cookieName', 'sid'); // Устанавливаем в настройках сервера специальную переменную,
