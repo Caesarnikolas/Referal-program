@@ -26,8 +26,8 @@ const userSchema = new Schema({
     ref: 'Applicants',
   }],
   photo: {
-    type: String
-  }
+    type: String,
+  },
 });
 
 const UserModel = model('Users', userSchema);

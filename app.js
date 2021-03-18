@@ -3,10 +3,12 @@ const morgan = require('morgan');
 const path = require('path');
 const hbs = require('hbs');
 const sessions = require('express-session');
-const FileStore = require('session-file-store')(sessions);
-const connect = require('mongoose');
-
+const MongoStore = require('connect-mongo')(sessions);
+const { connect } = require('mongoose');
+const mongoose = require('mongoose');
 const userRouter = require('./src/routes/user.router');
+const mainRouter = require('./src/routes/main.router');
+
 
 const app = express();
 const PORT = 3000;
@@ -16,6 +18,8 @@ const secretKey = '7c48aaa6d93b475ab617753471cfd864270c97d4e8e5a0c8035e6cb89bed1
 // dbConnect();
 
 app.set('view engine', 'hbs');
+hbs.registerPartials(path.join(process.env.PWD, 'src', 'views', 'partials'));
+
 app.set('cookieName', 'sid'); // Устанавливаем в настройках сервера специальную переменную,
 // которая говорит, какое имя будут носить cookie
 app.set('views', path.join(process.env.PWD, 'src', 'views'));
@@ -24,9 +28,8 @@ app.use(sessions({
   secret: secretKey,
   resave: false, // Не сохранять сессию, если мы ее не изменим
   saveUninitialized: false, // не сохранять пустую сессию
-  store: new FileStore({ // выбираем в качестве хранилища файловую систему
-    secret: secretKey,
-  }),
+  store: new MongoStore({ // выбираем в качестве хранилища файловую систему
+    mongooseConnection: mongoose.connection}),
   cookie: { // настройки, необходимые для корректного работы cookie
     // secure: true,
     httpOnly: true, // не разрещаем модифицировать данную cookie через javascript
@@ -45,11 +48,11 @@ app.use(async (req, res, next) => {
 });
 
 app.use('/user', userRouter);
-// app.use('/', pageRouter);
+app.use('/', mainRouter);
 
 app.listen(PORT, () => {
   console.log('Server started on port ', PORT);
-  const connectionAddress = process.env.DATABASE_CONNECTION_ADDRESS ?? 'mongodb://localhost:27017/assesment';
+  const connectionAddress = process.env.DATABASE_CONNECTION_ADDRESS ?? 'mongodb://localhost:27017/referral-program';
 
   connect(connectionAddress, {
     useNewUrlParser: true,
