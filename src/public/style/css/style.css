@@ -99,6 +99,6 @@ button:hover {
 
 .landing-tree {
   min-height: 950px;
-  background-image: url('/src/style/img/tree-yellow.jpg');
+  background-image: url('/style/img/tree-yellow.jpg');
   background-size: 100%;
 }

@@ -9,29 +9,35 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const {
-    name,
     email,
-    phone,
-    date,
     password,
   } = req.body;
   try {
     const salt = 10;
     const hashesPassword = await bcrypt.hash(password, salt);
     const user = await UserModel.create({
-      name,
       email,
-      phone,
-      date,
       password: hashesPassword,
     });
     req.session.user = user;
 
-    res.status(200).json(user);
+    res.sredirect('/user');
   } catch (error) {
     res.sendStatus(500);
   }
+});
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  if (email && password) {
+    const currentUser = await UserModel.findOne({ email });
+    if (currentUser && (await bcrypt.compare(password, currentUser.password))) {
+      req.session.user = currentUser
 
+      return res.redirect('/')
+    }
+    return res.status(418).redirect('/user/signin')
+  }
+  return res.status(418).redirect('/user/signin')
 });
 
 module.exports = router;

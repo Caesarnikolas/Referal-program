@@ -19,18 +19,21 @@ const secretKey = '7c48aaa6d93b475ab617753471cfd864270c97d4e8e5a0c8035e6cb89bed1
 // dbConnect();
 
 app.set('view engine', 'hbs');
+app.use(express.static(path.join(process.env.PWD, 'src', 'public')));
 hbs.registerPartials(path.join(process.env.PWD, 'src', 'views', 'partials'));
 
 app.set('cookieName', 'sid'); // Устанавливаем в настройках сервера специальную переменную,
 // которая говорит, какое имя будут носить cookie
 app.set('views', path.join(process.env.PWD, 'src', 'views'));
+
 app.use(sessions({
   name: app.get('cookieName'),
   secret: secretKey,
   resave: false, // Не сохранять сессию, если мы ее не изменим
   saveUninitialized: false, // не сохранять пустую сессию
   store: new MongoStore({ // выбираем в качестве хранилища файловую систему
-    mongooseConnection: mongoose.connection}),
+    mongooseConnection: mongoose.connection
+  }),
   cookie: { // настройки, необходимые для корректного работы cookie
     // secure: true,
     httpOnly: true, // не разрещаем модифицировать данную cookie через javascript
