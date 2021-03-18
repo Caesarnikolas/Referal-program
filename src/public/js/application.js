@@ -48,7 +48,7 @@ if (form) {
     if (response.status === 200) {
 
       const aplicantContainer = document.querySelector("#aplicantContainer");
-      aplicantContainer.insertAdjacentHTML('beforeend', generateInnerHtml(userJson));
+      aplicantContainer.insertAdjacentHTML('afterbegin', generateInnerHtml(userJson));
 
 
     }
