@@ -9,7 +9,6 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const {
-    name,
     email,
     password,
   } = req.body;
@@ -22,11 +21,10 @@ router.post('/', async (req, res) => {
     });
     req.session.user = user;
 
-    res.status(200).json(user);
+    res.sredirect('/user');
   } catch (error) {
     res.sendStatus(500);
   }
-
 });
 
 module.exports = router;

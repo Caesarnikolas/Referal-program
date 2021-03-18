@@ -4,12 +4,13 @@
       <img src="https://pyxis.nymag.com/v1/imgs/424/858/e6c66c3a1992e711bca0137b754fea749f-cat-law.rsquare.w700.jpg"
         class="img-fluid" alt="...">
     </div>
+    {{#if user}}
     <div class="col" name="user-name">
-      Имя пользователя :
+      Имя пользователя :{{user.name}}
     </div>
-    <div class="col" name="user-mail"></div>
     <div class="col" name="user-mail">
-      Email:
+      Email: {{user.email}}
     </div>
+    {{/if}}
   </div>
 </div>
