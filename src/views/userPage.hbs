@@ -34,8 +34,8 @@
 
       </div>
     </div>
-    <div class="col-6 py-5" id="aplicantContainer">
       {{#each allAplicants}}
+    <div class="col-3 flex-wrap-nowrap aplicant-container" id="aplicantContainer">
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="/uploads/{{this.photo}}" alt="Card image cap">
         <div class="card-body">
@@ -51,8 +51,8 @@
 
         </div>
       </div>
-      {{/each}}
     </div>
+      {{/each}}
     <div class="col-6">
     </div>
     <div class="col-6">
