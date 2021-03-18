@@ -4,6 +4,7 @@ const multer = require('multer');
 const ApplicantModel = require('../models/applicant.model');
 const UserModel = require('../models/user.model');
 
+
 const storageConfig = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'src/public/uploads');
