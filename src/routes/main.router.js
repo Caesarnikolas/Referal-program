@@ -4,7 +4,7 @@ const ApplicantModel = require('../models/applicant.model');
 const UserModel = require('../models/user.model');
 
 router.get('/', async (req, res) => {
-  res.render('main');
+  res.render('index');
 });
 
 router.post('/', async (req, res) => {
