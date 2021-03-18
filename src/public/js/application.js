@@ -1,4 +1,4 @@
-const form = document.querySelector('')
+const form = document.querySelector('#aplicantForm')
 if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -13,7 +13,8 @@ if (form) {
       ),
     });
     if (response.status === 200) {
-
+        const 
     }
   })
 }
+

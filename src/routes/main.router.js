@@ -19,10 +19,7 @@ router.post('/', async (req, res) => {
     const salt = 10;
     const hashesPassword = await bcrypt.hash(password, salt);
     const user = await UserModel.create({
-      name,
       email,
-      phone,
-      date,
       password: hashesPassword,
     });
     req.session.user = user;
