@@ -1,18 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
 
 body {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://www.codeplatoon.org/wp-content/uploads/2019/08/artificial-intelligence-code-codes-34676.jpg);
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(https://www.codeplatoon.org/wp-content/uploads/2019/08/artificial-intelligence-code-codes-34676.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-
 }
 
 .user-list {
   display: flex;
   flex-flow: column wrap;
   max-height: 350px;
-
 }
 
 .header {
@@ -22,7 +21,7 @@ body {
   background: #461fac;
   width: 100%;
   height: 50px;
-  color: white
+  color: white;
 }
 
 .header-form {
@@ -30,7 +29,6 @@ body {
 }
 
 .header-button {
-
   width: 100px;
   height: 30px;
   border: none;
@@ -46,9 +44,6 @@ button:hover {
   color: #febe62;
   background: rgba(0, 0, 0, 0);
 }
-
-
-
 
 .landing-about {
   display: flex;
@@ -88,7 +83,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-
 }
 
 .landing-plus-text {
@@ -99,6 +93,6 @@ button:hover {
 
 .landing-tree {
   min-height: 950px;
-  background-image: url('/src/style/img/tree-yellow.jpg');
+  background-image: url("/style/img/tree-yellow.jpg");
   background-size: 100%;
 }
