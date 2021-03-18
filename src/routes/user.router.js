@@ -17,7 +17,13 @@ const storageConfig = multer.diskStorage({
 router.use(multer({ storage: storageConfig }).single('photo'));
 
 router.get('/', async (req, res) => {
-  const allAplicants = await ApplicantModel.find();
+
+  // const id = req.session?._id;
+
+  // const user = await UserModel.findById({ id });
+  // console.log(user);
+  const allAplicants = await ApplicantModel.find(); //{ addedBy: id }
+
   res.render('userPage', { allAplicants });
 });
 
@@ -33,6 +39,7 @@ router.post('/', async (req, res) => {
   const image = req.file;
   console.log('====>', req.body);
   try {
+    // const id = req.session?._id;
     const applicant = await ApplicantModel.create({
       name,
       email,
@@ -40,9 +47,9 @@ router.post('/', async (req, res) => {
       startDate,
       telegram,
       photo: image.filename,
+      // addedBy: id,
     });
     // eslint-disable-next-line no-underscore-dangle
-    const id = req.session?._id;
     await UserModel.findByIdAndUpdate(id, { $push: { applicants: applicant } });
     return res.status(200).json(applicant);
   } catch (error) {
