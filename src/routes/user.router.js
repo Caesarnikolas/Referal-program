@@ -17,6 +17,7 @@ router.post('/', async (req, res) => {
     email,
     phone,
     date,
+    photo,
   } = req.body;
   try {
     const applicant = await ApplicantModel.create({
