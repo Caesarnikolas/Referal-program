@@ -1,27 +1,33 @@
-
-console.log('>>>>>>>>HELLLLLLO');
-const form = document.querySelector('#aplicantForm')
+const form = document.querySelector('#aplicantForm');
 
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const formData = Object.fromEntries(new FormData(form).entries());
-  console.log('formData>>>>>>>>>>>>>>>>>>>>>>>..', formData);
-  const response = await fetch('/user', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify(
-      { formData }
-    ),
-  });
+// const fileField = document.querySelector('#photo');
+// console.log(fileField, 'asdasdasdasd');
+// console.log(fileField.files[0]);
+// formData.append('avatar', fileField.files[0]);
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", e.target.name.value);
+    formData.append("email", e.target.email.value);
+    formData.append("phone", e.target.phone.value);
+    formData.append("startDate", e.target.startDate.value);
+    formData.append("photo", e.target.photo.files[0]);
 
-  const userJson = await response.json();
-  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", userJson)
-  function generateInnerHtml(user) {
-    return `      <div class="card" style="width: 18rem;">
+    console.log(formData.get('photo'));
+    const response = await fetch('http://localhost:3000/user', {
+      method: 'POST',
+      body: formData,
+      // headers: {
+      //   'Content-Type': 'multipart/form-data',
+      // }
+    });
+
+    const userJson = await response.json();
+
+    function generateInnerHtml(user) {
+      return `      <div class="card" style="width: 18rem;">
       <img class="card-img-top" src="/uploads/${user.photo}" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">Name: ${user.name}</h5>
@@ -45,4 +51,14 @@ form.addEventListener('submit', async (e) => {
   }
 })
 
+    if (response.status === 200) {
+
+      const aplicantContainer = document.querySelector("#aplicantContainer");
+      aplicantContainer.insertAdjacentHTML('afterbegin', generateInnerHtml(userJson));
+
+
+    }
+
+  });
+}
 

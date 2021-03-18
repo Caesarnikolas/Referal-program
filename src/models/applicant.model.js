@@ -3,15 +3,15 @@ const { model, Schema } = require('mongoose');
 const applicantSchema = new Schema({
   name: {
     type: String,
-    required: true,
+    // required: true,
   },
   email: {
     type: String,
-    required: true,
+    // required: true,
   },
   phone: {
     type: String,
-    required: true,
+    // required: true,
   },
   telegram: {
     type: String,
@@ -20,11 +20,14 @@ const applicantSchema = new Schema({
     type: String,
     default: 'заявка подана',
   },
-  photo: {
-    type: String,
-  },
+  photo: String,
+
   startDate: {
     type: String,
+  },
+  addedBy: {
+    type: Schema.Types.ObjectId,
+    ref: 'Users',
   },
 });
 
