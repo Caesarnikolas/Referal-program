@@ -10,6 +10,7 @@ router.get('/', async (req, res) => {
   res.render('userPage', { allAplicants });
 });
 
+
 router.post('/', async (req, res) => {
   const {
     name,
