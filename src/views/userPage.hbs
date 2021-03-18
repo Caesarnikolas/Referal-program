@@ -14,16 +14,18 @@
             <input type="text" name="email" class="form-control" id="exampleInputEmail1">
           </div>
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Telegram:</label>
-            <input type="text" name="telegram" class="form-control" id="exampleInputEmail1">
+            <label for="exampleInputEmail1" class="form-label">Phone:</label>
+            <input type="tel" name="phone" class="form-control" id="exampleInputEmail1">
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Дата старта:</label>
-            <input type="date" name="startDate" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="date" name="startDate" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp">
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Photo:</label>
-            <input type="file" name="photo" class="form-control" id="exampleInputEmail1">
+            <input type="file" name="photo" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp">
           </div>
           <button type="submit" class="btn btn-primary">Порекомендовать!</button>
         </form>
@@ -32,19 +34,20 @@
     <div class="col-6 py-5">
       {{#each allAplicants}}
       <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="this.photo" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Name: {{this.name}}</h5>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Phone: {{this.phone}}</li>
-    <li class="list-group-item">Started at {{this.startDate}}</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
+        <img class="card-img-top" src="{{this.photo}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Name: {{this.name}}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Phone: {{this.phone}}</li>
+          <li class="list-group-item">Started at {{this.startDate}}</li>
+          <li class="list-group-item">Status: {{this.status}}</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
       {{/each}}
     </div>
     <div class="col-6">

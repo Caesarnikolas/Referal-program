@@ -11,7 +11,7 @@ const storageConfig = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + file.originalname);
-  }
+  },
 });
 router.use(multer({ storage: storageConfig }).single('photo'));
 
@@ -26,7 +26,9 @@ router.post('/', async (req, res) => {
     name,
     email,
     phone,
-    date,
+    startDate,
+    telegram,
+    photo,
   } = req.body;
   console.log(req.body);
   try {
@@ -34,7 +36,9 @@ router.post('/', async (req, res) => {
       name,
       email,
       phone,
-      date,
+      startDate,
+      telegram,
+      photo,
     });
     // eslint-disable-next-line no-underscore-dangle
     const id = req.session?._id;
