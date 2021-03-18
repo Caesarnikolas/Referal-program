@@ -1,15 +1,17 @@
 <div class="container">
   <div class="row row-cols-2">
     <div class="col">
-      <img src="https://pyxis.nymag.com/v1/imgs/424/858/e6c66c3a1992e711bca0137b754fea749f-cat-law.rsquare.w700.jpg"
-        class="img-fluid" alt="...">
+      <img src="/uploads/{{user.photo}}" class="img-fluid" alt="...">
     </div>
     <div class="col" name="user-name">
-      Имя пользователя :
+      Имя пользователя : {{user.name}}
     </div>
-    <div class="col" name="user-mail"></div>
+    <div class="col" name="user-phone">
+      Phone: {{user.phone}}
+    </div>
     <div class="col" name="user-mail">
-      Email:
+      Email:{{user.email}}
     </div>
+    <button class='header-button' type="submit">Редактировать</button>
   </div>
 </div>

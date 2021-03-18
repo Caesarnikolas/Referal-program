@@ -3,7 +3,8 @@
     <div class="col-6">
       <div class="p-3 border bg-light">{{>userProfile}}</div>
       <div class="p-3 border bg-light">
-        <form method="POST"  enctype = "multipart/form-data">
+        {{!-- {{#if currentUser}} --}}
+        <form method="POST" enctype="multipart/form-data" id="aplicantForm">
           <span>Друг, которого хочешь порекомендовать: <p> </span>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Имя:</label>
@@ -24,15 +25,17 @@
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Photo:</label>
-            <input type="file" name="photo" class="form-control" id="exampleInputEmail1"
-              aria-describedby="emailHelp">
+            <input type="file" name="photo" class="form-control" id="photo" aria-describedby="emailHelp">
           </div>
-          <button type="submit" class="btn btn-primary">Порекомендовать!</button>
+          <button class='header-button submit-user' type="submit">Порекомендовать</button>
+
         </form>
+        {{!-- {{/if}} --}}
+
       </div>
     </div>
-    <div class="col-6 py-5">
       {{#each allAplicants}}
+    <div class="col-3 flex-wrap-nowrap aplicant-container" id="aplicantContainer">
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="/uploads/{{this.photo}}" alt="Card image cap">
         <div class="card-body">
@@ -44,12 +47,12 @@
           <li class="list-group-item">Status: {{this.status}}</li>
         </ul>
         <div class="card-body">
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+          <button class='header-button' type="submit">Blabla</button>
+
         </div>
       </div>
-      {{/each}}
     </div>
+      {{/each}}
     <div class="col-6">
     </div>
     <div class="col-6">
