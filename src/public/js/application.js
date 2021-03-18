@@ -42,8 +42,14 @@ if (form) {
         <a href="#" class="card-link">Another link</a>
       </div>
     </div>`;
-    }
+  }
 
+
+  if (response.status === 200) {
+    const aplicantContainer = document.querySelector("#aplicantContainer")
+    userJson.insertAdjacentHTML('beforeend', generateInnerHtml(userJson));
+  }
+})
 
     if (response.status === 200) {
 
