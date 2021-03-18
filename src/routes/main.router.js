@@ -11,8 +11,6 @@ router.post('/', async (req, res) => {
   const {
     name,
     email,
-    phone,
-    date,
     password,
   } = req.body;
   try {

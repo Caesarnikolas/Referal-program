@@ -3,7 +3,7 @@
     <div class="col-6">
       <div class="p-3 border bg-light">{{>userProfile}}</div>
       <div class="p-3 border bg-light">
-        <form method="POST">
+        <form method="POST"  enctype = "multipart/form-data">
           <span>Друг, которого хочешь порекомендовать: <p> </span>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Имя:</label>
@@ -34,7 +34,7 @@
     <div class="col-6 py-5">
       {{#each allAplicants}}
       <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{this.photo}}" alt="Card image cap">
+        <img class="card-img-top" src="/uploads/{{this.photo}}" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Name: {{this.name}}</h5>
         </div>
