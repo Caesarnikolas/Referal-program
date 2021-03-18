@@ -17,11 +17,13 @@ const storageConfig = multer.diskStorage({
 router.use(multer({ storage: storageConfig }).single('photo'));
 
 router.get('/', async (req, res) => {
+
   // const id = req.session?._id;
 
   // const user = await UserModel.findById({ id });
   // console.log(user);
   const allAplicants = await ApplicantModel.find(); //{ addedBy: id }
+
   res.render('userPage', { allAplicants });
 });
 
@@ -55,4 +57,9 @@ router.post('/', async (req, res) => {
     return res.sendStatus(500);
   }
 });
+
+router.get('/:id', async(req, res) => {
+  const user = await UserModel.findById(req.params.id);
+  res.render('userPage', { user });
+})
 module.exports = router;

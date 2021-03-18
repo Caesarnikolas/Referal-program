@@ -7,6 +7,7 @@ const MongoStore = require('connect-mongo')(sessions);
 const { connect } = require('mongoose');
 const mongoose = require('mongoose');
 const userRouter = require('./src/routes/user.router');
+const adminRouter = require('./src/routes/admin.router')
 const mainRouter = require('./src/routes/main.router');
 
 
@@ -50,6 +51,7 @@ app.use(async (req, res, next) => {
   next();
 });
 
+app.use('/admin', adminRouter);
 app.use('/user', userRouter);
 app.use('/', mainRouter);
 
