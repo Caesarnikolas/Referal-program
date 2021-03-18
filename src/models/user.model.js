@@ -17,10 +17,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
-  isAdmin: {
-    type: Boolean,
-    required: true,
-  },
+  role: String,
   applicants: [{
     type: Schema.Types.ObjectId,
     ref: 'Applicants',
