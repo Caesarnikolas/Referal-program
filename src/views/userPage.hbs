@@ -3,6 +3,7 @@
     <div class="col-6">
       <div class="p-3 border bg-light">{{>userProfile}}</div>
       <div class="p-3 border bg-light">
+        {{!-- {{#if currentUser}} --}}
         <form method="POST" enctype="multipart/form-data" id="aplicantForm">
           <span>Друг, которого хочешь порекомендовать: <p> </span>
           <div class="mb-3">
@@ -26,9 +27,11 @@
             <label for="exampleInputEmail1" class="form-label">Photo:</label>
             <input type="file" name="photo" class="form-control" id="photo" aria-describedby="emailHelp">
           </div>
-      <button class='header-button' type="submit">Порекомендов</button>
+          <button class='header-button submit-user' type="submit">Порекомендовать</button>
 
         </form>
+        {{!-- {{/if}} --}}
+
       </div>
     </div>
     <div class="col-6 py-5" id="aplicantContainer">
