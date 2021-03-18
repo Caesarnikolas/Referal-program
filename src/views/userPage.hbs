@@ -3,7 +3,7 @@
     <div class="col-6">
       <div class="p-3 border bg-light">{{>userProfile}}</div>
       <div class="p-3 border bg-light">
-        <form method="POST"  enctype = "multipart/form-data">
+        <form method="POST" enctype="multipart/form-data" id="aplicantForm">
           <span>Друг, которого хочешь порекомендовать: <p> </span>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Имя:</label>
@@ -24,8 +24,7 @@
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Photo:</label>
-            <input type="file" name="photo" class="form-control" id="exampleInputEmail1"
-              aria-describedby="emailHelp">
+            <input type="file" name="photo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
           </div>
           <button type="submit" class="btn btn-primary">Порекомендовать!</button>
         </form>
