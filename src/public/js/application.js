@@ -14,7 +14,7 @@ if (form) {
     formData.append("phone", e.target.phone.value);
     formData.append("startDate", e.target.startDate.value);
     formData.append("photo", e.target.photo.files[0]);
-
+    console.log('====>', e.target.photo.files[0]);
     console.log(formData.get('photo'));
     const response = await fetch('http://localhost:3000/user', {
       method: 'POST',
@@ -23,9 +23,7 @@ if (form) {
       //   'Content-Type': 'multipart/form-data',
       // }
     });
-
     const userJson = await response.json();
-
     function generateInnerHtml(user) {
       return `      <div class="card" style="width: 18rem;">
       <img class="card-img-top" src="/uploads/${user.photo}" alt="Card image cap">
@@ -42,23 +40,12 @@ if (form) {
         <a href="#" class="card-link">Another link</a>
       </div>
     </div>`;
-  }
-
-
-  if (response.status === 200) {
-    const aplicantContainer = document.querySelector("#aplicantContainer")
-    userJson.insertAdjacentHTML('beforeend', generateInnerHtml(userJson));
-  }
-})
-
-    if (response.status === 200) {
-
-      const aplicantContainer = document.querySelector("#aplicantContainer");
-      aplicantContainer.insertAdjacentHTML('afterbegin', generateInnerHtml(userJson));
-
-
     }
-
+    if (response.status === 200) {
+      console.log('bfdjbjfs');
+      const aplicantContainer = document.querySelector("#aplicantContainer");
+      console.log(aplicantContainer);
+      aplicantContainer.insertAdjacentHTML('afterbegin', generateInnerHtml(userJson));
+    }
   });
 }
-

@@ -69,7 +69,7 @@ body {
 
 
 .header-ancors {
-justify-content: flex-end;
+  justify-content: flex-end;
   margin-top: 18px;
   margin-right: 10px;
 }
@@ -94,7 +94,7 @@ justify-content: flex-end;
   transition: all 500ms ease;
 }
 
-.submit-user{
+.submit-user {
   width: 250px;
 }
 
@@ -162,6 +162,19 @@ button:hover {
   background-image: url('/style/img/tree-yellow.jpg');
   background-size: 100%;
 }
+
+
+
+.aplicant-container {
+  
+}
+
+
+
+
+
+
+
 
 
 

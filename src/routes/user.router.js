@@ -51,7 +51,7 @@ router.post('/', async (req, res) => {
     });
     console.log(applicant)
     // eslint-disable-next-line no-underscore-dangle
-    await UserModel.findByIdAndUpdate(id, { $push: { applicants: applicant } });
+    // await UserModel.findByIdAndUpdate(id, { $push: { applicants: applicant } });
     return res.status(200).json(applicant);
   } catch (error) {
     console.log(error);
