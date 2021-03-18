@@ -1,6 +1,6 @@
 const form = document.querySelector('#aplicantForm');
-const formData = Object.fromEntries(new FormData(form).entries());
-console.log(formData);
+
+
 // const fileField = document.querySelector('#photo');
 // console.log(fileField, 'asdasdasdasd');
 // console.log(fileField.files[0]);
@@ -8,11 +8,20 @@ console.log(formData);
 if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append("name", e.target.name.value);
+    formData.append("email", e.target.email.value);
+    formData.append("phone", e.target.phone.value);
+    formData.append("startDate", e.target.startDate.value);
+    formData.append("photo", e.target.photo.files[0]);
+
+    console.log(formData.get('photo'));
     const response = await fetch('http://localhost:3000/user', {
       method: 'POST',
-      body: JSON.stringify(
-        formData,
-      ),
+      body: formData,
+      // headers: {
+      //   'Content-Type': 'multipart/form-data',
+      // }
     });
 
     const userJson = await response.json();
@@ -37,13 +46,13 @@ if (form) {
 
 
     if (response.status === 200) {
-      
+
       const aplicantContainer = document.querySelector("#aplicantContainer");
-      userJson.insertAdjacentHTML('beforeend', generateInnerHtml(userJson));
-      const div = document.createElement('div')
-      aplicantContainer.append(div);
-      window.location.replace('http://localhost:3000'); 
+      aplicantContainer.insertAdjacentHTML('beforeend', generateInnerHtml(userJson));
+
+
     }
+
   });
 }
 

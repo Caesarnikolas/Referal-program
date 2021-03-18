@@ -26,5 +26,18 @@ router.post('/', async (req, res) => {
     res.sendStatus(500);
   }
 });
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  if (email && password) {
+    const currentUser = await UserModel.findOne({ email });
+    if (currentUser && (await bcrypt.compare(password, currentUser.password))) {
+      req.session.user = currentUser
+
+      return res.redirect('/')
+    }
+    return res.status(418).redirect('/user/signin')
+  }
+  return res.status(418).redirect('/user/signin')
+});
 
 module.exports = router;
