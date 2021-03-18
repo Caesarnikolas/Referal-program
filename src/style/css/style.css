@@ -15,7 +15,7 @@ body {
 
 }
 
-.footer {
+.header {
   display: flex;
   justify-content: space-around;
 
@@ -25,11 +25,11 @@ body {
   color: white
 }
 
-.footer-form {
+.header-form {
   padding-top: 10px;
 }
 
-.footer-button {
+.header-button {
 
   width: 100px;
   height: 30px;

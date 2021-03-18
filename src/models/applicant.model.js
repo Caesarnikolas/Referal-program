@@ -18,7 +18,7 @@ const applicantSchema = new Schema({
   },
   status: {
     type: String,
-    required: true,
+    default: 'заявка подана',
   },
   photo: {
     type: String,

@@ -11,15 +11,16 @@ async function start() {
       password: '123456',
       email: 'petr@mail.ru',
       phone: '9991235678',
-      isAdmin: false,
+      role: 'user',
     });
 
     const userTwo = new UserModel({
-      name: 'Seven',
+      name: 'Semen',
       password: '654321',
       email: 'semen@mail.ru',
       phone: '9851235678',
-      isAdmin: true,
+      role: 'admin',
+
     });
 
     const applicantOne = new ApplicantModel({
