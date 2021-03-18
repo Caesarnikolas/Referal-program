@@ -1,8 +1,13 @@
 const router = require('express').Router();
+const multer = require('multer')
+const upload = multer({ dest: 'uploads/' })
+const ApplicantModel = require('../models/applicant.model');
+const UserModel = require('../models/user.model');
 
 router.get('/', async (req, res) => {
-  const allStudents = await Student.find();
-  res.render('profile', { allStudents });
+  const allAplicants = await ApplicantModel.find();
+  console.log(allAplicants);
+  res.render('userPage', { allAplicants });
 });
 
 router.post('/', async (req, res) => {
@@ -13,16 +18,19 @@ router.post('/', async (req, res) => {
     date,
   } = req.body;
   try {
-    const user = await User.create({
+    const applicant = await ApplicantModel.create({
       name,
       email,
       phone,
       date,
     });
-    res.status(200).json(user);
+    // eslint-disable-next-line no-underscore-dangle
+    const id = req.session?._id;
+    await UserModel.findByIdAndUpdate(id, { $push: { applicants: applicant } });
+    res.status(200).json(applicant);
   } catch (error) {
     res.sendStatus(500);
-  }
+  };
 
 });
 module.exports = router;

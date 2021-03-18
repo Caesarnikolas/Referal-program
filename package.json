@@ -4,12 +4,12 @@
   "description": "Реферальная программа для Elbrus Bootcamp",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Caesarnikolas/Reference-program.git"
@@ -19,11 +19,12 @@
   },
   "homepage": "https://github.com/Caesarnikolas/Reference-program#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^3.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "hbs": "^4.1.1",
     "mongoose": "^5.12.0",
-    "session-file-store": "^1.5.0"
-
+    "multer": "^1.4.2"
   }
 }
