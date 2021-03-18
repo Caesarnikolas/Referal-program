@@ -17,7 +17,7 @@ router.use(multer({ storage: storageConfig }).single('photo'));
 
 router.get('/', async (req, res) => {
   const allAplicants = await ApplicantModel.find();
-  console.log(allAplicants);
+  // console.log(allAplicants);
   res.render('userPage', { allAplicants });
 });
 
@@ -48,4 +48,9 @@ router.post('/', async (req, res) => {
     res.sendStatus(500);
   }
 });
+
+router.get('/:id', async(req, res) => {
+  const user = await UserModel.findById(req.params.id);
+  res.render('userPage', { user });
+})
 module.exports = router;
