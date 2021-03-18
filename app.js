@@ -47,7 +47,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(async (req, res, next) => {
   res.locals.user = req.session?.user;
-
+  // res.locals.currentUser = (req.session?.user.role === 'user')
   next();
 });
 
