@@ -25,6 +25,10 @@ const applicantSchema = new Schema({
   startDate: {
     type: String,
   },
+  addedBy: {
+    type: Schema.Types.ObjectId,
+    ref: 'Users',
+  },
 });
 
 const ApplicantModel = model('Applicants', applicantSchema);
