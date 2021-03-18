@@ -13,7 +13,10 @@
 
 
 <div class="p-x-1 p-y-3">
-  <form class="card card-block m-x-auto bg-faded form-width" method="POST">
+  {{#if messages.error}}
+   <legend class="m-b-1 text-xs-center">{{messages.error}}</legend>
+   {{/if}}
+  <form class="card card-block m-x-auto bg-faded form-width" method="POST" action="/register">
     <legend class="m-b-1 text-xs-center">Регистрация</legend>
     <div class="form-group input-group">
       <span class="has-float-label">
@@ -28,7 +31,7 @@
     <div class="form-group input-group">
       <span class="input-group-addon">@</span>
       <span class="has-float-label">
-        <input class="form-control" id="email" type="email" placeholder="name@example.com" />
+        <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" />
         <label for="email">E-mail</label>
       </span>
     </div>
