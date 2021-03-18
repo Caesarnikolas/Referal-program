@@ -41,9 +41,10 @@ router.post('/', async (req, res) => {
       telegram,
       photo: image.filename,
     });
+    console.log(applicant)
     // eslint-disable-next-line no-underscore-dangle
     const id = req.session?._id;
-    await UserModel.findByIdAndUpdate(id, { $push: { applicants: applicant } });
+    // await UserModel.findByIdAndUpdate(id, { $push: { applicants: applicant } });
     res.status(200).json(applicant);
   } catch (error) {
     res.sendStatus(500);
