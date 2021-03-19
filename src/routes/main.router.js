@@ -41,6 +41,7 @@ router.post('/register', async (req, res) => {
     req.session.user = user;
 
     return res.redirect('/user');
+
   } catch (error) {
     return res.sendStatus(500);
   }
