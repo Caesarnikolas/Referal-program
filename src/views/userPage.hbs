@@ -1,4 +1,7 @@
-<div class="container">
+{{>navbar}}
+
+
+<div class="container  user-profile-container">
   <div class="row g-2">
     <div class="col-6">
       <div class="p-3 border bg-light">{{>userProfile}}</div>
@@ -34,10 +37,11 @@
 
       </div>
     </div>
-      {{#each allAplicants}}
+    
+    {{#each allAplicants}}
     <div class="col-3 flex-wrap-nowrap aplicant-container" id="aplicantContainer">
       <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="/uploads/{{this.photo}}" alt="Card image cap">
+        <img class="card-img-top card-photo" src="/uploads/{{this.photo}}" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Name: {{this.name}}</h5>
         </div>
@@ -47,12 +51,17 @@
           <li class="list-group-item">Status: {{this.status}}</li>
         </ul>
         <div class="card-body">
-          <button class='header-button' type="submit">Blabla</button>
+          <div class="button">
+          <button class='header-button aplicant-button' type="click">ЗАПРОСИТЬ ВЫПЛАТУ</button>
+
+          </div>
+          {{!-- <button class='header-button' type="submit">Blabla</button> --}}
+
 
         </div>
       </div>
     </div>
-      {{/each}}
+    {{/each}}
     <div class="col-6">
     </div>
     <div class="col-6">
