@@ -57,9 +57,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(async (req, res, next) => {
-  res.locals.user = req.session.passport?.user;
-  res.locals.currentUser = (req.session?.user.role === 'user');
-  res.locals.admin = (req.session?.user.role === 'admin');
+  res.locals.userPasport = req.session?.passport?.user;
+  res.locals.user = req.session?.user;
+  res.locals.currentUser = (req.session?.user?.role === 'user');
+  res.locals.admin = (req.session?.user?.role === 'admin');
+  console.log(res.locals.admin);
 
   next();
 });

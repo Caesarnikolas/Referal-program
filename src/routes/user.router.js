@@ -19,7 +19,7 @@ router.use(multer({ storage: storageConfig }).single('photo'));
 
 router.get('/', async (req, res) => {
 
-  const id = req.session?.user._id;
+  const id = req.session?.user?._id;
 
   const user = await UserModel.findById(id);
   console.log(user, 'TUT user');
