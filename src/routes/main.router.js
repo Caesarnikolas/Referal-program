@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
     });
     req.session.user = user;
 
-    res.sredirect("/user");
+    res.redirect("/user");
   } catch (error) {
     res.sendStatus(500);
   }

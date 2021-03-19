@@ -7,7 +7,8 @@ async function start() {
     dbConnect();
 
     const userOne = new UserModel({
-      name: 'Petr',
+      firstname: 'Пётр',
+      lastname: 'Иванов',
       password: '123456',
       email: 'petr@mail.ru',
       phone: '9991235678',
@@ -15,7 +16,8 @@ async function start() {
     });
 
     const userTwo = new UserModel({
-      name: 'Semen',
+      firstname: 'Семён',
+      lastname: 'Петров',
       password: '654321',
       email: 'semen@mail.ru',
       phone: '9851235678',
@@ -24,7 +26,7 @@ async function start() {
     });
 
     const applicantOne = new ApplicantModel({
-      name: 'Andrey',
+      firstname: 'Андрей',
       email: 'andrey@mail.ru',
       phone: '91212345678',
       status: 'заявка подана',
@@ -32,7 +34,7 @@ async function start() {
     });
 
     const applicantTwo = new ApplicantModel({
-      name: 'Anton',
+      firstname: 'Антон',
       email: 'anton@mail.ru',
       phone: '92612345678',
       status: 'заявка подана',
