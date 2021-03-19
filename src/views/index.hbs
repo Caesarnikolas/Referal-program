@@ -2,11 +2,16 @@
   <div class="container header">
     <img src="/style/logo/logo-blue.svg" alt="">
     <div class="header-ancors">
+{{#if user}}
+      <a href="/">{{user.firstname}}</a>
+      <a href="/logout">Выйти</a>
+{{else}}
       <a href="/login">Войти /</a>
       <a href="/register">Зарегистрироваться /</a>
 
+      <a href="/github">Войти через GitHub</a>
+{{/if}}
 
-      <a href="/user">Profile</a>
     </div>
   </div>
 

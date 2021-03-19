@@ -1,7 +1,11 @@
 const { model, Schema } = require("mongoose");
 
 const userSchema = new Schema({
-  name: {
+  firstname: {
+    type: String,
+    // required: true,
+  },
+  lastname: {
     type: String,
     // required: true,
   },
@@ -22,14 +26,17 @@ const userSchema = new Schema({
     // required: true,
   },
   role: String,
-  applicants: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Applicants',
-  }],
+  applicants: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Applicants",
+    },
+  ],
   photo: {
     type: String,
   },
+  githubId: String,
 });
 
-const UserModel = model('Users', userSchema);
+const UserModel = model("Users", userSchema);
 module.exports = UserModel;
