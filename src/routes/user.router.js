@@ -23,7 +23,9 @@ router.get('/', async (req, res) => {
 
   const user = await UserModel.findById(id);
   console.log(user, 'TUT user');
-  const allAplicants = await ApplicantModel.find({ addedBy: id }); //{ addedBy: id }
+  const allAplicants = await ApplicantModel.find({ addedBy: id });
+  //{ addedBy: id }
+  console.log(allAplicants);
 
   res.render('userPage', { allAplicants, user });
 });
@@ -50,25 +52,26 @@ router.post('/', async (req, res) => {
       photo: image.filename,
       addedBy: id,
     });
-    console.log(applicant);
+    // console.log(applicant);
     // eslint-disable-next-line no-underscore-dangle
     await UserModel.findByIdAndUpdate(id, { $push: { applicants: applicant } });
     return res.status(200).json(applicant);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return res.sendStatus(500);
   }
 });
 
 router.get('/:id', async (req, res) => {
   const user = await UserModel.findById(req.params.id);
-  console.log(user);
-  res.render('userPage', { user });
+  console.log(user, 'TUT user');
+  const allAplicants = await ApplicantModel.find({ addedBy: req.params.id });
+  res.render('userPage', {allAplicants, user });
 });
 
 router.get('/edit/:id', async (req, res) => {
   const user = await UserModel.findById(req.params.id);
-  console.log(user, 'EDit Get');
+  // console.log(user, 'EDit Get');
   res.render('edit', { user });
 });
 router.post('/edit/:id', async (req, res) => {
@@ -79,7 +82,7 @@ router.post('/edit/:id', async (req, res) => {
     photo,
   } = req.body;
   const image = req.file;
-  console.log(image);
+  // console.log(image);
 
   const user = await UserModel.findByIdAndUpdate(id, {
     firstName,
@@ -87,7 +90,7 @@ router.post('/edit/:id', async (req, res) => {
     phone,
     photo: image.filename,
   });
-  console.log(user);
+  // console.log(user);
   res.redirect('/user');
 });
 module.exports = router;

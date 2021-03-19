@@ -3,7 +3,7 @@ const UserModel = require('../models/user.model');
 
 router.get('/', async (req, res) => {
   const users = await UserModel.find();
-  console.log(users);
+  // console.log('====> USERS', users);
   res.render('adminPage', { users });
 });
 
