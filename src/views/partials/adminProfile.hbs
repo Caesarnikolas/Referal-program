@@ -12,6 +12,8 @@
     <div class="col" name="user-mail">
       Email:{{user.email}}
     </div>
-    <button class='header-button' type="submit">Редактировать</button>
+    <a href="/admin/edit/{{user._id}}">
+      <button class='header-button' id="editButton" type="submit">Редактировать</button>
+    </a>
   </div>
 </div>

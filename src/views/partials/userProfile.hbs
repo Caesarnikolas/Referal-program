@@ -13,9 +13,10 @@
     <div class="col" name="user-mail">
       Phone: {{user.phone}}
     </div>
-    {{!-- {{/if}} --}}
+    {{#if currentUser}}
     <a href="/user/edit/{{user._id}}">
       <button class='header-button' id="editButton" type="submit">Редактировать</button>
     </a>
+    {{/if}}
   </div>
 </div>

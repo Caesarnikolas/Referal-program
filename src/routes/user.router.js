@@ -66,7 +66,7 @@ router.get('/:id', async (req, res) => {
   const user = await UserModel.findById(req.params.id);
   console.log(user, 'TUT user');
   const allAplicants = await ApplicantModel.find({ addedBy: req.params.id });
-  res.render('userPage', {allAplicants, user });
+  res.render('userPage', { allAplicants, user });
 });
 
 router.get('/edit/:id', async (req, res) => {
@@ -90,7 +90,9 @@ router.post('/edit/:id', async (req, res) => {
     phone,
     photo: image.filename,
   });
-  // console.log(user);
-  res.redirect('/user');
+  if (user.role === 'user') {
+    res.redirect('/user');
+  }
+  res.redirect('/admin');
 });
 module.exports = router;
