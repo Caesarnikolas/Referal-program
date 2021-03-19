@@ -81,7 +81,7 @@ body {
 }
 
 .header-a {
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 
@@ -185,7 +185,7 @@ button:hover {
 }
 
 .post-4 {
-  padding-top: 60px;
+  padding-top: 30px;
   font-family: "Rostin";
   text-align: center;
   font-size: 23px;
@@ -198,6 +198,10 @@ button:hover {
   border: 2px solid #4520AB;
   ;
   margin: 10px 10px 10px 25px;
+}
+
+.post-4 h3 {
+  padding-bottom: 20px;
 }
 
 .post-4:hover {
@@ -374,4 +378,25 @@ button:hover {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   margin-left: -1px;
+}
+
+
+.login-form {
+  padding-top: 100px;
+}
+
+.register-form {
+  padding-top: 100px;
+}
+
+.user-container {
+  position: relative;
+  padding-top: 150px;
+  z-index: -1;
+}
+
+.admin-container {
+  position: relative;
+  padding-top: 150px;
+  z-index: -1;
 }
