@@ -7,7 +7,7 @@
     <div class="col-6">
       <div class="p-3 border bg-light">{{>userProfile}}</div>
       <div class="p-3 border bg-light">
-        {{!-- {{#if currentUser}} --}}
+        {{#if currentUser}}
         <form method="POST" enctype="multipart/form-data" id="aplicantForm">
           <span>Друг, которого хочешь порекомендовать: <p> </span>
           <div class="mb-3">
@@ -34,7 +34,7 @@
           <button class='header-button submit-user' type="submit">Порекомендовать</button>
 
         </form>
-        {{!-- {{/if}} --}}
+        {{/if}}
 
       </div>
     </div>

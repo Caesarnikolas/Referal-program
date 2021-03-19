@@ -1,10 +1,5 @@
 const form = document.querySelector('#aplicantForm');
-
-
-// const fileField = document.querySelector('#photo');
-// console.log(fileField, 'asdasdasdasd');
-// console.log(fileField.files[0]);
-// formData.append('avatar', fileField.files[0]);
+console.log(form);
 if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -14,7 +9,6 @@ if (form) {
     formData.append("phone", e.target.phone.value);
     formData.append("startDate", e.target.startDate.value);
     formData.append("photo", e.target.photo.files[0]);
-    console.log('====>', e.target.photo.files[0]);
     console.log(formData.get('photo'));
     const response = await fetch('http://localhost:3000/user', {
       method: 'POST',
