@@ -91,8 +91,8 @@ router.post('/edit/:id', async (req, res) => {
     photo: image.filename,
   });
   if (user.role === 'user') {
-    res.redirect('/user');
+    return res.redirect('/user');
   }
-  res.redirect('/admin');
+  return res.redirect('/admin');
 });
 module.exports = router;

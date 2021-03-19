@@ -4,10 +4,10 @@
       <div class="header-ancors-logo">
         <a href="https://elbrusboot.camp/" class="link"></a>
       </div>
-      {{#if user}}
+      {{#if currentUser}}
 
 
-      <a href="/user">{{user.firstname}}</a>
+      <a class="header-a" href="/user">Мой профиль</a>
       <a class="header-a" href="/"> На главную </a>
       <a class="header-a" href="/logout">Выйти </a>
       {{else}}
