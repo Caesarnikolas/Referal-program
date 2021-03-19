@@ -25,9 +25,8 @@ router.get('/register', async (req, res) => {
 router.post('/register', async (req, res) => {
   const {
     email, password, firstName,
-    lastName,
+    lastName, role,
   } = req.body;
-  console.log(req.body);
   try {
     const salt = 10;
     const hashesPassword = await bcrypt.hash(password, salt);
@@ -36,10 +35,13 @@ router.post('/register', async (req, res) => {
       lastName,
       email,
       password: hashesPassword,
+      role,
     });
-    console.log(user);
     req.session.user = user;
-
+    console.log(req.session, 'Session');
+    if (req.body.role === 'admin') {
+      return res.redirect('/admin');
+    }
     return res.redirect('/user');
 
   } catch (error) {
@@ -47,32 +49,34 @@ router.post('/register', async (req, res) => {
   }
 });
 
-router.get("/register", (req, res) => {
-  res.render("register");
+router.get('/login', (req, res) => {
+  res.render('login');
 });
 
-router.post("/login", async (req, res) => {
+router.post('/login', async (req, res) => {
   const { email, password } = req.body;
   if (email && password) {
     const currentUser = await UserModel.findOne({ email });
     if (currentUser && (await bcrypt.compare(password, currentUser.password))) {
       req.session.user = currentUser;
-
-      return res.redirect("/");
+      if (req.session?.user?.role === 'admin') {
+        return res.redirect('/admin');
+      }
+      return res.redirect('/user');
     }
-    return res.status(418).redirect("/login");
+    return res.status(418).redirect('/login');
   }
-  return res.status(418).redirect("/login");
+  return res.status(418).redirect('/login');
 });
 
-// router.post(
-//   '/login',
-//   passport.authenticate('local', {
-//     successRedirect: '/',
-//     failureRedirect: '/login',
-//     failureFlash: true,
-//   }),
-// );
+router.post(
+  '/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true,
+  }),
+);
 
 router.get('/github', passport.authenticate('github'));
 

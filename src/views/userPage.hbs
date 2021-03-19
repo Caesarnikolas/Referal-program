@@ -36,27 +36,43 @@
           </form>
           {{!-- {{/if}} --}}
 
-        </div>
       </div>
+    </div>
 
-      {{#each allAplicants}}
+    {{#each allAplicants}}
+    <div class="col-3 flex-wrap-nowrap aplicant-container" id="aplicantContainer">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top card-photo" src="/uploads/{{this.photo}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Name: {{this.name}}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Phone: {{this.phone}}</li>
+          <li class="list-group-item">Started at {{this.startDate}}</li>
+          {{#if admin}}
+          <select name="select" class="list-group-item">
+            <!--Supplement an id here instead of using 'name'-->
+            <option value="value1" selected>{{this.status}}</option>
+            <option value="value2">В процессе</option>
+            <option value="value3">Выпустился</option>
+          </select>
+          {{/if}}
+          {{!-- <li class="list-group-item">Status: {{this.status}}</li> --}}
+        </ul>
+        {{#if admin}}
+        <div class="card-body">
+          <div class="button">
+          <button class='header-button aplicant-button' id="payButton" type="click">Оплатить</button>
+
+      {{!-- {{#each allAplicants}} --}}
       <div class="col-3 flex-wrap-nowrap aplicant-container" id="aplicantContainer">
         <div class="card" style="width: 18rem;">
           <img class="card-img-top card-photo" src="/uploads/{{this.photo}}" alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title">Name: {{this.name}}</h5>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Phone: {{this.phone}}</li>
-            <li class="list-group-item">Started at {{this.startDate}}</li>
-            <li class="list-group-item">Status: {{this.status}}</li>
-          </ul>
-          <div class="card-body">
-            <div class="button">
-              <button class='header-button aplicant-button' type="click">ЗАПРОСИТЬ ВЫПЛАТУ</button>
-
-            </div>
-            {{!-- <button class='header-button' type="submit">Blabla</button> --}}
+          {{/if}}
+          {{!-- <button class='header-button' type="submit">Blabla</button> --}}
 
 
           </div>
