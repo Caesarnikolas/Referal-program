@@ -1,10 +1,5 @@
 const form = document.querySelector('#aplicantForm');
-
-
-// const fileField = document.querySelector('#photo');
-// console.log(fileField, 'asdasdasdasd');
-// console.log(fileField.files[0]);
-// formData.append('avatar', fileField.files[0]);
+console.log(form);
 if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();

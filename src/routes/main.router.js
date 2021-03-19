@@ -8,25 +8,46 @@ router.get("/", async (req, res) => {
   res.render("index");
 });
 
-router.post("/", async (req, res) => {
+
+router.get('/register', async (req, res) => {
+  res.render('register');
+});
+router.post('/register', async (req, res) => {
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+
+  } = req.body;
+  console.log(req.body);
+
+  router.post("/register", async (req, res) => {
   const { email, password } = req.body;
+
   try {
     const salt = 10;
     const hashesPassword = await bcrypt.hash(password, salt);
     const user = await UserModel.create({
+      firstName,
+      lastName,
       email,
       password: hashesPassword,
     });
+    console.log(user);
     req.session.user = user;
 
-    res.sredirect("/user");
+
+    return res.redirect('/user');
+
   } catch (error) {
-    res.sendStatus(500);
+    return res.sendStatus(500);
   }
 });
 
-router.get("/register", (req, res) => {
-  res.render("register");
+
+router.get('/login', async (req, res) => {
+  res.render('login');
 });
 
 router.post(
@@ -82,5 +103,8 @@ router.get("/logout", async (req, res) => {
     res.clearCookie(req.app.get("cookieName"));
     return res.redirect("/");
   });
+});
+router.get('/edit', async (req, res) => {
+  res.render('edit');
 });
 module.exports = router;

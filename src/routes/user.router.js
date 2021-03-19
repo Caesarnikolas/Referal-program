@@ -34,6 +34,7 @@ router.post('/', async (req, res) => {
     phone,
     startDate,
     telegram,
+    photo,
   } = req.body;
 
   const image = req.file;
@@ -49,7 +50,7 @@ router.post('/', async (req, res) => {
       photo: image.filename,
       // addedBy: id,
     });
-    console.log(applicant)
+    console.log(applicant);
     // eslint-disable-next-line no-underscore-dangle
     // await UserModel.findByIdAndUpdate(id, { $push: { applicants: applicant } });
     return res.status(200).json(applicant);
@@ -59,8 +60,8 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/:id', async(req, res) => {
+router.get('/:id', async (req, res) => {
   const user = await UserModel.findById(req.params.id);
   res.render('userPage', { user });
-})
+});
 module.exports = router;
