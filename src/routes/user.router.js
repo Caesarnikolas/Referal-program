@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const router = require('express').Router();
 const multer = require('multer');
 
@@ -18,13 +19,13 @@ router.use(multer({ storage: storageConfig }).single('photo'));
 
 router.get('/', async (req, res) => {
 
-  // const id = req.session?._id;
+  const id = req.session?.user._id;
 
-  // const user = await UserModel.findById({ id });
-  // console.log(user);
-  const allAplicants = await ApplicantModel.find(); //{ addedBy: id }
+  const user = await UserModel.findById(id);
+  console.log(user, 'TUT user');
+  const allAplicants = await ApplicantModel.find({ addedBy: id }); //{ addedBy: id }
 
-  res.render('userPage', { allAplicants });
+  res.render('userPage', { allAplicants, user });
 });
 
 router.post('/', async (req, res) => {
@@ -34,12 +35,12 @@ router.post('/', async (req, res) => {
     phone,
     startDate,
     telegram,
+    photo,
   } = req.body;
 
   const image = req.file;
-  console.log('====>', req.body);
   try {
-    // const id = req.session?._id;
+    const id = req.session?.user._id;
     const applicant = await ApplicantModel.create({
       name,
       email,
@@ -47,11 +48,11 @@ router.post('/', async (req, res) => {
       startDate,
       telegram,
       photo: image.filename,
-      // addedBy: id,
+      addedBy: id,
     });
-    console.log(applicant)
+    console.log(applicant);
     // eslint-disable-next-line no-underscore-dangle
-    // await UserModel.findByIdAndUpdate(id, { $push: { applicants: applicant } });
+    await UserModel.findByIdAndUpdate(id, { $push: { applicants: applicant } });
     return res.status(200).json(applicant);
   } catch (error) {
     console.log(error);
@@ -59,8 +60,34 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/:id', async(req, res) => {
+router.get('/:id', async (req, res) => {
   const user = await UserModel.findById(req.params.id);
+  console.log(user);
   res.render('userPage', { user });
-})
+});
+
+router.get('/edit/:id', async (req, res) => {
+  const user = await UserModel.findById(req.params.id);
+  console.log(user, 'EDit Get');
+  res.render('edit', { user });
+});
+router.post('/edit/:id', async (req, res) => {
+  const id = req.params.id
+  const { firstName,
+    lastName,
+    phone,
+    photo,
+  } = req.body;
+  const image = req.file;
+  console.log(image);
+
+  const user = await UserModel.findByIdAndUpdate(id, {
+    firstName,
+    lastName,
+    phone,
+    photo: image.filename,
+  });
+  console.log(user);
+  res.redirect('/user');
+});
 module.exports = router;

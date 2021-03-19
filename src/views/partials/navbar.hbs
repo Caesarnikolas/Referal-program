@@ -1,0 +1,23 @@
+<header class="header">
+  <nav class="container">
+    <div class="header-ancors">
+      <div class="header-ancors-logo">
+        <a href="https://elbrusboot.camp/" class="link"></a>
+      </div>
+      {{#if user}}
+
+
+      <a href="/user">{{user.firstname}}</a>
+      <a class="header-a" href="/">/ На главную /</a>
+      <a class="header-a" href="/logout">Выйти </a>
+      {{else}}
+      <a class="header-a" href="/">/ На главную /</a>
+      <a class="header-a" href="/login">Войти /</a>
+      <a class="header-a" href="/register">Зарегистрироваться /</a>
+      <a class="header-a" href="/github">Войти через GitHub</a>
+      {{/if}}
+    </div>
+
+  </nav>
+
+</header>

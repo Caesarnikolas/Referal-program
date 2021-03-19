@@ -1,11 +1,11 @@
 const { model, Schema } = require("mongoose");
 
 const userSchema = new Schema({
-  firstname: {
+  firstName: {
     type: String,
     // required: true,
   },
-  lastname: {
+  lastName: {
     type: String,
     // required: true,
   },
@@ -21,7 +21,10 @@ const userSchema = new Schema({
     type: String,
     // required: true,
   },
-  role: String,
+  role: {
+    type: String,
+    default: 'user',
+  },
   applicants: [
     {
       type: Schema.Types.ObjectId,
