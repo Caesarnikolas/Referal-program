@@ -1,12 +1,16 @@
 {{>navbar}}
 
+<div class="admin-container">
 
-<div class="container">
-  <div class="row g-2">
-    <div class="col-6">
-      <div class="p-3 border bg-light">{{>userProfile}}</div>
-      <div class="p-3 border bg-light">
-      </div>
+
+  <div class="container">
+    <div class="row g-2">
+      <div class="col-6">
+        <div class="p-3 border bg-light">{{>userProfile}}</div>
+        <div class="p-3 border bg-light">
+        </div>
+
+
     </div>
     <div class="col-6 ">
       {{#each users}}
@@ -18,4 +22,5 @@
     <div class="col-6">
     </div>
   </div>
+
 </div>

@@ -81,7 +81,7 @@ body {
 }
 
 .header-a {
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 
@@ -156,20 +156,129 @@ button:hover {
 }
 
 
-
+/* GRID LANDING ABOUT START*/
 
 .landing-about {
-  display: flex;
-
-  flex-direction: column;
-  /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://www.codeplatoon.org/wp-content/uploads/2019/08/artificial-intelligence-code-codes-34676.jpg); */
-  min-height: 900px;
-  /* background-size: cover; */
+  padding-top: 110px;
+  margin-left: 26%;
+  /* border: 2px solid #FFBC5B; */
+  width: 900px;
+  height: 900px;
+  display: grid;
+  grid-template-areas: "post-1 post-1 post-1"
+    "post-2 post-2 post-2"
+    "post-3 post-4 post-5";
+  grid-template-rows: repeat((3, 1fr));
+  grid-template-columns: repeat((3, 1fr));
 }
+
+.post-1 {
+  grid-area: post-1;
+  /* background: white; */
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  margin-top: 5%;
+  width: 100%;
+  height: 50%;
+  font-weight: 900;
+  font-size: 40px;
+  color: #29EDFF;
+  letter-spacing: normal;
+}
+
+
+.post-2 {
+  grid-area: post-2;
+  text-align: center;
+  width: 95%;
+  height: 80px;
+  font-weight: 400;
+  font-size: 36px;
+  color: #29EDFF;
+  letter-spacing: normal;
+  padding-left: 50px;
+}
+
+
+.post-3 {
+  padding-top: 30px;
+  font-family: "Rostin";
+  text-align: center;
+  color: #4520AB;
+  width: 250px;
+  height: 80%;
+  background: white;
+  border-radius: 10px;
+  font-size: 23px;
+  margin: 10px 10px 10px 25px;
+  border: 2px solid #4520AB;
+  ;
+}
+
+.post-3:hover {
+  transition: 0.5s;
+  border: 2px solid #FFBC5B;
+  color: #FFBC5B;
+  background: rgba(0, 0, 0, 0);
+}
+
+.post-4 {
+  padding-top: 30px;
+  font-family: "Rostin";
+  text-align: center;
+  font-size: 23px;
+  color: #4520AB;
+  width: 250px;
+
+  height: 80%;
+  background: white;
+  border-radius: 10px;
+  border: 2px solid #4520AB;
+  ;
+  margin: 10px 10px 10px 25px;
+}
+
+.post-4 h3 {
+  padding-bottom: 20px;
+}
+
+.post-4:hover {
+  transition: 0.5s;
+  border: 2px solid #FFBC5B;
+  color: #FFBC5B;
+  background: rgba(0, 0, 0, 0);
+}
+
+.post-5 {
+  padding-top: 30px;
+  font-family: "Rostin";
+  text-align: center;
+  color: #4520AB;
+  width: 250px;
+
+  height: 80%;
+  background: white;
+  border-radius: 10px;
+  font-size: 23px;
+  border: 2px solid #4520AB;
+  ;
+  margin: 10px 10px 10px 25px;
+}
+
+.post-5:hover {
+  transition: 0.5s;
+  border: 2px solid #FFBC5B;
+  color: #FFBC5B;
+  background: rgba(0, 0, 0, 0);
+}
+
+/* GRID LANDING ABOUT END*/
+
+/* 
 
 .landing-about-reference {
 
-  margin-top: 100px;
   text-align: center;
   width: 100%;
   height: 100px;
@@ -190,7 +299,7 @@ button:hover {
   color: #29EDFF;
   letter-spacing: normal;
   padding-left: 50px;
-}
+} */
 
 /* .landing-plus {
   min-height: 900px;
@@ -201,7 +310,7 @@ button:hover {
 
 } */
 
-.landing-plus-text {
+/* .landing-plus-text {
   font-family: "Rostin";
   font-size: 36px;
   text-align: center;
@@ -212,7 +321,7 @@ button:hover {
   min-height: 950px;
   background-image: url('/style/img/tree-yellow.jpg');
   background-size: 100%;
-}
+} */
 
 /* .user-profile-container {} */
 
@@ -308,4 +417,25 @@ button:hover {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   margin-left: -1px;
+}
+
+
+.login-form {
+  padding-top: 100px;
+}
+
+.register-form {
+  padding-top: 100px;
+}
+
+.user-container {
+  position: relative;
+  padding-top: 150px;
+  z-index: -1;
+}
+
+.admin-container {
+  position: relative;
+  padding-top: 150px;
+  z-index: -1;
 }
