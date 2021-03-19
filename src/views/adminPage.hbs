@@ -6,7 +6,7 @@
   <div class="container">
     <div class="row g-2">
       <div class="col-6">
-        <div class="p-3 border bg-light">{{>userProfile}}</div>
+        <div class="p-3 border bg-light">{{>adminProfile}}</div>
         <div class="p-3 border bg-light">
         </div>
 
@@ -14,7 +14,7 @@
     </div>
     <div class="col-6 ">
       {{#each users}}
-      <a href="/user/{{this._id}}">{{this.firstname}} {{this.lastname}}</a>
+      <a href="/user/{{this._id}}">{{this.firstName}}</a>
       {{/each}}
     </div>
     <div class="col-6">

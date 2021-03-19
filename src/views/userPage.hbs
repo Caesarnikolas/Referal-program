@@ -49,18 +49,18 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Phone: {{this.phone}}</li>
           <li class="list-group-item">Started at {{this.startDate}}</li>
-          {{#if admin}}
+          {{!-- {{#if admin}} --}}
           <select name="select" class="list-group-item">
             <!--Supplement an id here instead of using 'name'-->
-            <option value="value1" selected>{{this.status}}</option>
-            <option value="value2">В процессе</option>
-            <option value="value3">Выпустился</option>
+            <option class="card-title" value="value1" selected>{{this.status}}</option>
+            <option class="card-title" value="value2">В процессе</option>
+            <option class="card-title" value="value3">Выпустился</option>
           </select>
-          {{/if}}
+          {{!-- {{/if}} --}}
           {{!-- <li class="list-group-item">Status: {{this.status}}</li> --}}
         </ul>
-        {{#if admin}}
         <div class="card-body">
+        {{!-- {{#if admin}} --}}
           <div class="button">
           <button class='header-button aplicant-button' id="payButton" type="click">Оплатить</button>
 
@@ -71,7 +71,7 @@
           <div class="card-body">
             <h5 class="card-title">Name: {{this.name}}</h5>
           </div>
-          {{/if}}
+          {{!-- {{/if}} --}}
           {{!-- <button class='header-button' type="submit">Blabla</button> --}}
 
 
