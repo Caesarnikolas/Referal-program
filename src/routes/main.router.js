@@ -27,7 +27,7 @@ router.post('/register', async (req, res) => {
     email, password, firstName,
     lastName,
   } = req.body;
-
+  console.log(req.body);
   try {
     const salt = 10;
     const hashesPassword = await bcrypt.hash(password, salt);
@@ -46,17 +46,8 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// router.post(
-//   '/register',
-//   passport.authenticate('local', {
-//     successRedirect: '/',
-//     failureRedirect: '/register',
-//     failureFlash: true,
-//   }),
-// );
-
-router.get('/login', async (req, res) => {
-  res.render('login');
+router.get("/register", (req, res) => {
+  res.render("register");
 });
 
 router.post("/login", async (req, res) => {
