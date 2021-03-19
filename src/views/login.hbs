@@ -1,25 +1,19 @@
-<header class="header">
-  <div class="container header">
-    <img src="/style/logo/logo-blue.svg" alt="">
-
-
-    </div>
-  </div>
-
-</header>
-
+{{>navbar}}
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" />
 
 
 <div class="p-x-1 p-y-3">
-  <form class="card card-block m-x-auto bg-faded form-width" method="POST">
+  {{#if messages.error}}
+   <legend class="m-b-1 text-xs-center">{{messages.error}}</legend>
+   {{/if}}
+  <form class="card card-block m-x-auto bg-faded form-width" method="POST" action="/login">
     <legend class="m-b-1 text-xs-center">Авторизация</legend>
 
     <div class="form-group input-group">
       <span class="input-group-addon">@</span>
       <span class="has-float-label">
-        <input class="form-control" id="email" type="email" placeholder="name@example.com" />
+        <input class="form-control" name="email" id="email" type="email" placeholder="name@example.com" />
         <label for="email">E-mail</label>
       </span>
     </div>
@@ -31,7 +25,7 @@
  
 
     <div class="text-xs-center">
-      <button class="btn btn-block btn-primary" type="submit">Регистрация</button>
+      <button class="btn btn-block btn-primary" type="submit">Войти</button>
     </div>
   </form>
 </div>
